@@ -1,0 +1,113 @@
+# 3 Random
+
+```cpp
+#include <stdlib.h>
+
+int main(){
+  int i = rand();
+  printf(i);
+}
+```
+
+## Pseudo-Random
+
+The number is pseido-random
+- mathematical function displaying "chaotic" behavior
+- close to ideal distribution
+
+## Random 0..RAND_MAX
+
+Random Number between `0` and `RAND_MAX`
+
+```cpp
+int random = rand();
+```
+
+## Random 0..max
+
+Random Number between `0` and `max` (exclusive)
+- Use the Modulo-Operator!
+
+```
+rand() -> rand()%5:
+ 0 -> 0
+ 1 -> 1
+ 2 -> 2
+ 3 -> 3
+ 4 -> 4
+ 5 -> 0
+ 6 -> 1
+ 7 -> 2
+ 8 -> 3
+ 9 -> 4 
+10 -> 0
+  ...
+```
+
+```cpp
+int random = rand()%max;
+```
+
+## Random min..max
+
+Random Number between `min` (inclusive) and `max` (exclusive)
+
+```cpp
+int random = rand()%(max-min+1) + min;
+```
+
+```
+rand() -> rand()%3+2:
+ 0 -> 0+2 -> 2
+ 1 -> 1+2 -> 3
+ 2 -> 2+2 -> 4
+ 3 -> 0+2 -> 2
+ 4 -> 1+2 -> 3
+ 5 -> 2+2 -> 4
+ 6 -> 0+2 -> 2
+ 7 -> 1+2 -> 3
+ 8 -> 2+2 -> 4
+     ...
+```
+
+## Seed
+
+Run this program multiple times:
+
+```cpp
+#include <stdlib.h>
+#include <iostream>
+
+int main(){
+  for(int i = 0; i < 5; i++){
+    std::cout << rand()%100 << std::endl;
+  }
+}
+```
+
+You always get the same numbers?
+- successivecalls of `rand()` return a deterministic sequence of numbers
+- you get the same "random" numbers every time!
+- very useful for debugging
+
+## Changing the Seed
+
+Assign a different seed, if you want a different set of "random" numbers:
+
+```cpp
+srand(50);
+```
+
+## Completely Random
+
+If you want your Seed to be "random" every time you start your program, just use the current time:
+
+```cpp
+#include <time.h>
+
+// ...
+
+srand(time(0));
+```
+
+Good enough in most cases! :)
