@@ -101,15 +101,18 @@ srand(50);
 After changing the seed, all consecutive calls to `rand()` will use that seed:
 
 ```cpp
-srand(50);
-std::cout < rand()%100 << std::endl;
-std::cout < rand()%100 << std::endl;
-srand(51);
-std::cout < rand()%100 << std::endl;
-std::cout < rand()%100 << std::endl;
-srand(50);
-std::cout < rand()%100 << std::endl;
-std::cout < rand()%100 << std::endl;
+    std::cout << "First two random numbers of seed 50:" << std::endl;
+    srand(50);
+    std::cout << rand() % 100 << std::endl;
+    std::cout << rand() % 100 << std::endl;
+    std::cout << "First two random numbers of seed 51:" << std::endl;
+    srand(51);
+    std::cout << rand() % 100 << std::endl;
+    std::cout << rand() % 100 << std::endl;
+    std::cout << "First two random numbers of seed 50:" << std::endl;
+    srand(50);
+    std::cout << rand() % 100 << std::endl;
+    std::cout << rand() % 100 << std::endl;
 ```
 
 ## Completely Random
