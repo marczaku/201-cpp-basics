@@ -98,6 +98,20 @@ Assign a different seed, if you want a different set of "random" numbers:
 srand(50);
 ```
 
+After changing the seed, all consecutive calls to `rand()` will use that seed:
+
+```cpp
+srand(50);
+std::cout < rand()%100 << std::endl;
+std::cout < rand()%100 << std::endl;
+srand(51);
+std::cout < rand()%100 << std::endl;
+std::cout < rand()%100 << std::endl;
+srand(50);
+std::cout < rand()%100 << std::endl;
+std::cout < rand()%100 << std::endl;
+```
+
 ## Completely Random
 
 If you want your Seed to be "random" every time you start your program, just use the current time:
