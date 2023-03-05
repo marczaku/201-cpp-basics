@@ -190,19 +190,63 @@ Data types that are defined by the user are known as user-defined data types. Th
 
 ### Integers
 
+```cpp
+// integers can store positive numbers:
+int number = 50;
+printf("%d", number); // 50
+// as well as negative numbers:
+number = -1000;
+printf("%d", number); // -1000
+// rational numbers are truncated:
+number = 10.5;
+printf("%d", number); // 10
+// the limit is at around positive and negative 2.1bln (it overflows):
+number = 2'300'000'000;
+printf("%d", number); // ca. -2bln
+```
+
+#### Different Sizes
+- `int`: 4 bytes
+- `short`: 2 bytes
+- `char`: 1 byte
+- `long long`: 8 bytes
+
+The more bytes, the larger the numbers that can be stored:
+- 4 bytes: -2.1bln to +2.1bln
+- 2 bytes: -65k to +65k
+- 1 byte: -128 to +127
+- 8 bytes: 2.3e-18 to 2.3e+18
+
 | Type | Signed | Win32 | Unix32 | Win64 | Unix64 | Printf |
 |------|--------|-------|--------|-------|--------|--------|
 | short | Yes | 2 | 2 | 2 | 2 | %hd |
-| unsigned short | No | 2 | 2 | 2 | 2 | %hu |
 | int | Yes | 4 | 4 | 4 | 4 | %d |
-| unsigned int | No | 4 | 4 | 4 | 4 | %u |
 | long | Yes | 4 | 4 | 4 | 8 | %ld |
-| unsigned long | No | 4 | 4 | 4 | 8 | %lu |
 | long long | Yes | 8 | 8 | 8 | 8 | %lld |
-| usigned long long | No | 8 | 8 | 8 | 8 | %llu |
 
 - The sizes of numeric types depend on the OS and the Compiler
 - Your application can behave inconsistent
+
+#### Unsigned
+By using the unsigned keyword, you define that your integer can only store positive numbers.
+- This allows for twice as large positive numbers using the same amount of bytes
+
+```cpp
+char max_char = 127;
+unsigned char max_unsigned_char = 255;
+```
+
+But if you assign negative numbers, you will end up with really large positive numbers instead:
+```cpp
+unsigned char max_unsigned_char = -1; // 255
+```
+
+| Type | Signed | Win32 | Unix32 | Win64 | Unix64 | Printf |
+|------|--------|-------|--------|-------|--------|--------|
+| unsigned short | No | 2 | 2 | 2 | 2 | %hu |
+| unsigned int | No | 4 | 4 | 4 | 4 | %u |
+| unsigned long | No | 4 | 4 | 4 | 8 | %lu |
+| unsigned long long | No | 8 | 8 | 8 | 8 | %llu |
 
 #### Guaranteed sizes
 
@@ -232,6 +276,11 @@ What's the output?
 printf("%d", 011);
 ```
 
+Numeric literals per default have the smallest fitting type
+  - e.g. 111111 can be stored in `int`
+
+Unless you specify the type explicitly:
+
 ```cpp
 int a = 1234;
 unsigned int a = 1234u;
@@ -241,14 +290,16 @@ long long a = 1234ll;
 unsigned long long a = 1234ull;
 ```
 
-- Numeric literals per default have the smallest fitting type
-  - e.g. 111111 can be stored in `int`
-
 #### Printf
+You can print your integers as:
+- `c`haracters
+- `o`ctals
+- he`x`adecimal
+- `d`ecimal
 
 ```cpp
-unsigned int a = 255;
-printf("%c, %o, %u, %x", a, a, a, a);
+	unsigned int a = 65;
+	printf("%c, %o, %d, %x", a, a, a, a);
 ```
 
 ### Floating-Point Types
@@ -318,6 +369,10 @@ wchar_t a = '\u0041'; // 4-digit unicode
 wchar_t beer = U'\U0001F37A'; // 8-digit unicode
 ```
 
+But beware! Your Console might not be capable of displaying Unicode Characters with its Default Font!
+- still needed for your games, though!
+- e.g. in-game chat
+
 #### Printf
 
 ```cpp
@@ -331,6 +386,9 @@ int main() {
 ```
 
 ### Boolean
+Booleans are just integers with two possible values!
+- `1` (`true`)
+- `0` (`false`)
 
 ```cpp
 bool b = false; // 0
@@ -360,6 +418,7 @@ size_t floatSize = sizeof(float);
 ```
 
 - can store the maximum size of a theoretically possible object of any type (including array)
+- which can technically be more than 2.1bln (max value of `int`)
 - should be used whenever dealing with sizes of types or arrays
 
 #### Printf
