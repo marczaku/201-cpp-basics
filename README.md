@@ -7,3 +7,6 @@ Implement Nim
 
 ## Excellent Criteria
 Include an AI
+
+## Bonus
+Do Tic-Tac-Toe instead (requires knowledge of Arrays, though)
