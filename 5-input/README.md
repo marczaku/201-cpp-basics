@@ -1,5 +1,11 @@
 
-## 5 Input
+# 5 Input
+
+## Old, C-Style
+
+```cpp
+#include <cstdio>
+```
 
 ### Read Character: getchar
 
@@ -47,5 +53,20 @@ int main() {
         // else, we can print the average of both provided numbers:
         printf("The average is %d.\n", (num1+num2)/2);
     }
+}
+```
+
+## New, C++ Style
+
+```cpp
+#include <iostream>
+```
+
+```cpp
+cout << "Do you want to continue? y/n");
+char c ;
+cin >> c;
+switch(c){
+	/*...*/
 }
 ```
