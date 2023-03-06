@@ -6,7 +6,4 @@ In this course, we'll learn all the basics to get us up and running far enough t
 Implement Nim
 
 ## Excellent Criteria
-Implement Tic-Tac-Toe
-
-## Bonus
-Go back to the previous Bonus Exercise for 206 Graphs and use Dijkstra to find the shortest path between two stations.
+Include an AI

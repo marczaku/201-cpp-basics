@@ -1,56 +1,5 @@
-# 2 Basics
 
-## Comments
-
-### C-Style Comments
-
-```cpp
-/*
- * multi-line comment
- */
-```
-
-Careful: Nesting Comments does not work!
-```cpp
-/*
-void foo() {
-	int a = 3;
-	int b = 2;
-	/* int c = 5; */
-	return 5;
-}
-*/
-```
-
-### Cpp-Style Comments
-```cpp
-// single-line comment
-int number = 12; // span the rest of the line
-```
-
-## Output
-
-### Write Line: Puts
-
-Prints the given string and a newline to the console.
-
-```cpp
-puts("Hello, World.");
-```
-
-### Write: Printf
-
-```cpp
-printf("Hello, World.");
-```
-
-### Write Format: Printf
-
-```cpp
-printf("Ten %d, Twenty %d, Thirty %d", 10, 20, 30);
-```
-
-## Variables
+## 3.1 Variables
 
 > In terms of programming language, a variable is a location in the computer's memory where we can store data. The value of this data can be changed during the execution of a program. Each variable has a unique and meaningful name which is known as an identifier.
 
@@ -158,7 +107,7 @@ int a; // OK
 const int the_answer = 42;
 ```
 
-## Data Types
+## 3.2 Data Types
 
 ### Primitive or fundamental data types
 Primitive data types are predefined data types. These are:
@@ -186,7 +135,7 @@ Data types that are defined by the user are known as user-defined data types. Th
 - `class`
 - `typedef`
 
-## Fundamental Data Types
+## 3.3 Fundamental Data Types
 
 ### Integers
 
@@ -233,7 +182,9 @@ By using the unsigned keyword, you define that your integer can only store posit
 
 ```cpp
 char max_char = 127;
+char min_char = -128;
 unsigned char max_unsigned_char = 255;
+unsigned char min_unsigned_char = 0;
 ```
 
 But if you assign negative numbers, you will end up with really large positive numbers instead:
@@ -435,6 +386,8 @@ void sayHello() {
 }
 ```
 
+## 3.4 User-Defined Data Types
+
 ### Eumeration Types
 
 #### Scoped Enum (Modern, C++ Style)
@@ -470,202 +423,23 @@ ChessPiece rook = Rook;
 - Less safe to use, because values can be accessed without preceding type name `ChessPiece::`
 - Use for backwards-compatibility with C applications
 
-## Operators
-
-### Operator Types
-- Unary `-a`, `+a`, `a++`
-- Binary `a+b`, `a*b`, `a<b`
-- Ternary `a ? b : c`
-
-### Arithmetic Operators
-- `+`, `-`, `/`, `*`, `%`, `++`, `--`
-- Post-Increment: `a++`
-- Pre-Increment: `a--`
-
-### Comparison Operators
-- Two arguments
-- Return Type `bool`
-- `==`, `!=`, `<`, `<=`, `>`, `>=`
-
-### Logical Operators
-
-- `!`, `&&`, `||`
-
-### Bitwise Operators
-- `~`, `&`, `|`, `^`, `>>`, `<<`
+### Union
+All members of a union share the same address in memory.
+- if you change one member
+- it also affects the others
+- sometimes used for some low-level optimizations
+- generally considered "evil"
 
 ```cpp
-#include <cstdio>
-#include <array>
-#include <stdexcept>
-
-
-
-enum class AttackFlags : uint8_t
-{
-    None = 0,
-    Stun = 1 << 0,     //  1 0b00000001
-    Freeze = 1 << 1,   //  2 0b00000010
-    Poison = 1 << 2,   //  4 0b00000100
-    Magic = 1 << 3,    //  8 0b00001000
-    Physical = 1 << 4, // 16 0b00010000
-    Despell = 1 << 5,  // 32 0b00100000
-};
-
-int main()
-{
-    AttackFlags flags{ AttackFlags::None };
-
-    // setting bits:
-    flags = static_cast<AttackFlags>(static_cast<uint8_t>(flags) | static_cast<uint8_t>(AttackFlags::Stun));
-    flags = static_cast<AttackFlags>(static_cast<uint8_t>(flags) | static_cast<uint8_t>(AttackFlags::Poison));
-
-    // unsetting bits:
-    flags = static_cast<AttackFlags>(static_cast<uint8_t>(flags) & ~static_cast<uint8_t>(AttackFlags::Stun));
-
-    // testing for bits:
-    if (static_cast<uint8_t>(flags) & static_cast<uint8_t>(AttackFlags::Poison)) {
-        // true
-        printf("You will see this, since the Poison-Bit is set.");
-    }
-    if (static_cast<uint8_t>(flags) & static_cast<uint8_t>(AttackFlags::Stun)) {
-        // false
-        printf("You will not see this, since the Stun-Bit is not set.");
-    }
+union {
+  bool b;
+  char c;
 }
-```
-
-### Compound Assignment Operators
-
-- `+=`, `-=`, `*=`, `/=`, `%=`, `|=`, `&=`, `^=`, `<<=`, `>>=`
-
-## Input
-
-### Read Character: getchar
-
-```cpp
-printf("Do you want to continue? y/n");
-char c = getchar();
-{ // clear unparsed characters from the buffer
-	char _c;
-	while ((_c = getchar()) != '\n' && _c != EOF);
-}
-switch(c){
-	/*...*/
-}
-```
-
-### Read String: fgets
-
-Later
-
-### Read Format: scanf
-
-```cpp
-// required to allow using scanf on Windows
-#define _CRT_SECURE_NO_WARNINGS
-#include <cstdio>
 
 int main() {
-    for(int i = 0; i < 5; i++)
-    {
-        AskAgain:
-        // ask for input
-        printf("Give me two numbers. e.g. 3, 7\n");
-        // declare variable to store the information in
-        int num1, num2;
-        // read input from the console. Returns the number of successfully parsed arguments 
-        int result = scanf("%d, %d", &num1, &num2);
-        
-        { // clear unparsed characters from the buffer
-            char c;
-            while ((c = getchar()) != '\n' && c != EOF);
-        }
-
-        // if not both numbers were provided, we go back to asking again
-        if(result != 2) goto AskAgain;
-        // else, we can print the average of both provided numbers:
-        printf("The average is %d.\n", (num1+num2)/2);
-    }
+  b = true;
+  printf("%d", c); // 1
+  c = 0;
+  printf("%d", b); // 0
 }
 ```
-
-## Control Structures
-
-### Jumps
-- `goto`, `break`, `continue`
-
-### Branches
-- `if`, `switch`
-
-#### Switch
-
-```cpp
-int number = 1;
-switch(number) {
-	case 0: {
-		// option a 
-	} break;
-	case 1: {
-		// option b
-	} break;
-	default: {
-		printf("Error!");
-	}
-}
-```
-
-Performance: Compiler can generate:
-- jump table: no comparison needed
-- binary decision tree: optimized if..else with binary search
-- worst case: same as if..else
-
-### Loops
-`for`, `while`, `do..while`
-
-## Expressions
-
-Every expression is a valid C++ statement. Including:
-
-```cpp
-a = b = 10 + 2;
-a = 10 + 2;
-10 + 2;
-2;
-```
-
-### Expression Short-Cutting
-
-```cpp
-int a = 0, b = 0;
-if(++a || ++b){
-	printf("True!");
-}
-printf("a: %d, b: %d", a, b);
-```
-
-- first sub-expression is already true
-- so second sub-expression of `||` doesn't have to be executed
-- can be very useful e.g. `if(player && player.canAttack)`
-- can also be unintended
-
-## EXERCISE: Triangle
-- Print this Triangle to the Screen:
-
-```
-& & & & & &
-& & & & &
-& & & &
-& & &
-& &
-&
-```
-
-## EXERCISE: Swap Values of Two Variables
-- Assign 50 to variable named `a`
-- Assign 25 to variable named `b`
-- Swap the values of `a` and `b`
-
-## EXERCISE: Nim
-- Port your C# Code to C++
-  - Shouldn't be too difficult!

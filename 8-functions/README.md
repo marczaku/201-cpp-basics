@@ -1,4 +1,4 @@
-# 4 Functions
+# 8 Functions
 
 Logical units inside the source code. Goal: Reusable Code.
 - saves time
@@ -152,4 +152,48 @@ void bar(){
 void foo(){
   bar();
 }
+```
+
+## Overloading
+Overloading describes providing multiple functions with the same name (but different arguments):
+
+```cpp
+int max(int a, int b){printf("calling int\n"); return b > a ? b : a};
+float max(float a, float b){printf("calling float\n"); return b > a ? b : a};
+
+int main() {
+  printf("max(3, 4): %d\n", max(3, 4));
+  printf("max(3.2f, 4.2f): %f\n", max(3.2f, 4.2f));
+}
+```
+
+Output:
+```
+calling int
+max(3, 4): 4
+calling float
+max(3.2f, 4.2f): 4.200000
+```
+
+### Same Arguments not possible!
+Else, the compiler can't guarantee to know, which one to call.
+```cpp
+#include <limits>
+#include <iostream>
+
+int max_num(bool positive) {
+	return positive ? std::numeric_limits<int>::max() : std::numeric_limits<int>::min();
+}
+float max_num(bool positive) { 
+	return positive ? std::numeric_limits<float>::max() : std::numeric_limits<float>::min();
+}
+
+int main() {
+	std::cout << max_num(true); // which one is it supposed to call??
+}
+```
+
+Compile Error:
+```
+Error (active)	E0311	cannot overload functions distinguished by return type alone.
 ```

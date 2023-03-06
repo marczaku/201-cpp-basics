@@ -1,4 +1,4 @@
-# 3 Random
+# 7 Random
 
 ```cpp
 #include <stdlib.h>
