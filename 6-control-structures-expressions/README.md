@@ -74,6 +74,29 @@ printf("a: %d, b: %d", a, b);
 - Assign 25 to variable named `b`
 - Swap the values of `a` and `b`
 
-## EXERCISE: Nim
-- Port your C# Code to C++
-  - Shouldn't be too difficult!
+## EXERCISE
+Ask the user for two numbers. Then print the higher of both.
+```
+Output: Give me two numbers Separated by Comma. Like "-2,5"
+Input:0,-1
+Output: The higher number is: 0.
+```
+
+## EXERCISE
+Ask the user for a character. Return, whether the character is a digit, a lower-case letter, an upper-case letter or a symbol.
+```
+Output: Give me a character.
+Input:0
+Output: That's a digit.
+Output: Give me a character.
+Input:a
+Output: That's a lower-case letter.
+```
+
+## EXERCISE
+Ask the user for a base and a power. Return the base to the given power. Print the full multiplication.
+```
+Output: Give me a base and a power separated by ^. Like "2^5"
+Input:2^5
+Output: 2*2*2*2*2=32
+```

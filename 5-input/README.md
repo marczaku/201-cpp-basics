@@ -126,10 +126,32 @@ int main() {
 }
 ```
 
-## EXERCISE: ASK FOR AGE, RETURN AGE NEXT YEAR
-
+## EXERCISE
+Ask the user for his age, then return the next year.
 ```
 Output: What's your age?
 Input:32
 Output: Next year, you'll be 33!
+```
+
+## EXERCISE
+Ask the user for a character, then return the character before that.
+```
+Output: Give me a character.
+Input:E
+Output: Before that comes D.
+Output: Give me a character.
+Input:Z
+Output: Before that comes Y.
+Output: Give me a character.
+Input:A
+Output: Before that comes Z.
+```
+
+## EXERCISE
+Ask the user for a time in seconds. Print the time in Hours Minutes and Seconds.
+```
+Output: How many Seconds have passed?
+Input:4567
+Output: 01:16:07
 ```

@@ -128,3 +128,7 @@ srand(time(0));
 ```
 
 Good enough in most cases! :)
+
+## EXERCISE: Nim
+- Port your C# Code to C++
+  - Shouldn't be too difficult!
