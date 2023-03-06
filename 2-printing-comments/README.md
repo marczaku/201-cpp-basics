@@ -30,7 +30,13 @@ int number = 12; // span the rest of the line
 
 ## Output
 
-### Write Line: Puts
+### Old, C Style
+
+```cpp
+#include <cstdio>
+```
+
+#### Write Line: Puts
 
 Prints the given string and a newline to the console.
 
@@ -38,14 +44,25 @@ Prints the given string and a newline to the console.
 puts("Hello, World.");
 ```
 
-### Write: Printf
+#### Write: Printf
 
 ```cpp
 printf("Hello, World.");
 ```
 
-### Write Format: Printf
+#### Write Format: Printf
 
 ```cpp
 printf("Ten %d, Twenty %d, Thirty %d", 10, 20, 30);
+```
+
+### New, C++ Style
+
+```cpp
+#include <iostream>
+```
+
+```cpp
+cout << "Hello, World." << endl;
+cout << "Ten " << 10 << " Twenty << 20 << " Thirty " << 30 << endl;
 ```
