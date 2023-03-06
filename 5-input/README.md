@@ -70,3 +70,11 @@ switch(c){
 	/*...*/
 }
 ```
+
+## EXERCISE: ASK FOR AGE, RETURN AGE NEXT YEAR
+
+```
+Output: What's your age?
+Input:32
+Output: Next year, you'll be 33!
+```
