@@ -25,23 +25,49 @@ switch(c){
 
 Later (Requires Pointer Knowledge)
 
-### Read Format: scanf
+### Read Format: scanf_s
+
+#### Simple
 
 ```cpp
-// required to allow using scanf on Windows
-#define _CRT_SECURE_NO_WARNINGS
 #include <cstdio>
 
 int main() {
     for(int i = 0; i < 5; i++)
     {
         AskAgain:
+	
         // ask for input
         printf("Give me two numbers. e.g. 3, 7\n");
+	
         // declare variable to store the information in
         int num1, num2;
         // read input from the console. Returns the number of successfully parsed arguments 
-        int result = scanf("%d, %d", &num1, &num2);
+        int result = scanf_s("%d, %d", &num1, &num2);
+	
+        printf("The average is %d.\n", (num1+num2)/2);
+    }
+}
+```
+
+#### With Error Handling
+
+```cpp
+#include <cstdio>
+
+int main() {
+    for(int i = 0; i < 5; i++)
+    {
+        AskAgain:
+	
+        // ask for input
+        printf("Give me two numbers. e.g. 3, 7\n");
+	
+        // declare variable to store the information in
+        int num1, num2;
+	
+        // read input from the console. Returns the number of successfully parsed arguments 
+        int result = scanf_s("%d, %d", &num1, &num2);
         
         { // clear unparsed characters from the buffer
             char c;
@@ -50,6 +76,7 @@ int main() {
 
         // if not both numbers were provided, we go back to asking again
         if(result != 2) goto AskAgain;
+	
         // else, we can print the average of both provided numbers:
         printf("The average is %d.\n", (num1+num2)/2);
     }
@@ -57,6 +84,8 @@ int main() {
 ```
 
 ## New, C++ Style
+
+### Simple
 
 ```cpp
 #include <iostream>
@@ -68,6 +97,32 @@ char c ;
 cin >> c;
 switch(c){
 	/*...*/
+}
+```
+
+### With Error-Handling
+
+```cpp
+#include <iostream>
+
+using namespace std;
+
+int main() {
+    for (int i = 0; i < 5; i++)
+    {
+        cout << "Give me a number." << endl;
+        // declare variable to store the information in
+        int num1;
+        while (!(cin >> num1))
+        {
+            cin.clear();
+            cin.ignore(1000000, '\n');
+            cout << "That's not a valid input, try again." << endl;
+        }
+
+        // else, we can print the average of both provided numbers:
+        printf("Half of that is %d.\n", (num1 ) / 2);
+    }
 }
 ```
 
