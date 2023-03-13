@@ -166,15 +166,17 @@ The more bytes, the larger the numbers that can be stored:
 - 1 byte: -128 to +127
 - 8 bytes: 2.3e-18 to 2.3e+18
 
-| Type | Signed | Win32 | Unix32 | Win64 | Unix64 | Printf |
-|------|--------|-------|--------|-------|--------|--------|
-| short | Yes | 2 | 2 | 2 | 2 | %hd |
-| int | Yes | 4 | 4 | 4 | 4 | %d |
-| long | Yes | 4 | 4 | 4 | 8 | %ld |
-| long long | Yes | 8 | 8 | 8 | 8 | %lld |
+| Type | Signed | Win32 | Unix32 | Win64 | Unix64 | Printf | Value Range |
+|------|--------|-------|--------|-------|--------|--------|-------------|
+| int | Yes | 4 | 4 | 4 | 4 | %d | -2.1bln to 2.1bln |
+| short | Yes | 2 | 2 | 2 | 2 | %hd | -32,768 to 32,767 |
+| char | Yes | 1 | 1 | 1 | 1 | %hhd | -127 to 128 |
+| long | Yes | 4 | 4 | 4 | 8 | %ld | -2.1bln to 2.1bln |
+| long long | Yes | 8 | 8 | 8 | 8 | %lld | 9e-18 to 9e+18 |
 
 - The sizes of numeric types depend on the OS and the Compiler
 - Your application can behave inconsistent
+- Choose the right size for your needs
 
 #### Unsigned
 By using the unsigned keyword, you define that your integer can only store positive numbers.
@@ -192,22 +194,23 @@ But if you assign negative numbers, you will end up with really large positive n
 unsigned char max_unsigned_char = -1; // 255
 ```
 
-| Type | Signed | Win32 | Unix32 | Win64 | Unix64 | Printf |
-|------|--------|-------|--------|-------|--------|--------|
-| unsigned short | No | 2 | 2 | 2 | 2 | %hu |
-| unsigned int | No | 4 | 4 | 4 | 4 | %u |
-| unsigned long | No | 4 | 4 | 4 | 8 | %lu |
-| unsigned long long | No | 8 | 8 | 8 | 8 | %llu |
+| Type | Signed | Win32 | Unix32 | Win64 | Unix64 | Printf | Value Range |
+|------|--------|-------|--------|-------|--------|--------|-------------|
+| unsigned int | No | 4 | 4 | 4 | 4 | %u | 0 to 4.2bln |
+| unsigned short | No | 2 | 2 | 2 | 2 | %hu | 0 to 65535 |
+| unsigned char | No | 1 | 1 | 1 | 1 | %hhu | 0 to 255 |
+| unsigned long | No | 4 | 4 | 4 | 8 | %lu | 0 to 4.2bln |
+| unsigned long long | No | 8 | 8 | 8 | 8 | %llu | 0 to 18e+18 |
 
 #### Guaranteed sizes
 
 ```cpp
 #include <cstdint>
-int8_t a;
-int16_t b;
-int32_t c;
-int64_t d;
-uint8_t e;
+int8_t a; // 8 bit - 1 byte
+int16_t b; // 16 bit - 2 bytes
+int32_t c; // 32 bit - 4 bytes
+int64_t d; // 64 bit - 8 bytes
+uint8_t e; // 8 bit - 1 byte - unsigned
 ```
 
 - provides guaranteed sizes
