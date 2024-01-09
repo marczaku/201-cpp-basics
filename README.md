@@ -6,7 +6,4 @@ In this course, we'll learn all the basics to get us up and running far enough t
 Implement Nim
 
 ## Excellent Criteria
-Include an AI
-
-## Bonus
-Do Tic-Tac-Toe instead (requires knowledge of Arrays, though)
+Implement the Real Nim (with 3 Stacks of Matches)
