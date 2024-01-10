@@ -9,26 +9,64 @@
 ### Arithmetic Operators
 - `+`, `-`, `/`, `*`, `%`, `++`, `--`
 - Post-Increment: `a++`
-- Pre-Increment: `a--`
+- Pre-Increment: `++a`
+  - often has better performance!
+
+Used to express mathematical operations:
+
+```cpp
+float damage = (strength + itemPower) * bonusDamage;
+```
 
 ### Comparison Operators
-- Two arguments
-- Return Type `bool`
 - `==`, `!=`, `<`, `<=`, `>`, `>=`
+- Two arguments
+  - often of the same type
+  - but not always!
+- Return Type `bool`
+
+Used to compare two values by making an assumption and receiving:
+- `true`, if the assumption was true
+  - e.g. `4 < 100;`
+- `false`, if the assumption was false
+  - e.g. `1 == 2;`
+
+The Player has full health if
+- the player's health is EQUAL TO
+- the player's max health
+
+```cpp
+bool playerHasFullHealth = health == maxHealth;
+```
 
 ### Logical Operators
-
 - `!`, `&&`, `||`
+
+Used to express more complex logical conditions
+
+The Game is over if
+- either the player is dead
+- or BOTH:
+  - the game is NOT endless
+  - AND the time is over
+
+```cpp
+bool gameOver = playerIsDead || (!gameIsEndless && timeIsOver);
+```
 
 ### Bitwise Operators
 - `~`, `&`, `|`, `^`, `>>`, `<<`
+
+Used to do logical operations on bit-level
+- can be used for very low-level optimizations
+- often used for generating hashes
+- can be used for very simple encryption
+- most common use case: Enum Flags:
 
 ```cpp
 #include <cstdio>
 #include <array>
 #include <stdexcept>
-
-
 
 enum class AttackFlags : uint8_t
 {
@@ -65,5 +103,19 @@ int main()
 ```
 
 ### Compound Assignment Operators
+
+Exist to reduce our code from:
+```cpp
+health = health + 5;
+```
+
+to:
+
+```cpp
+health += 5;
+```
+
+In C++, they even bring performance benefits!
+- More on the reason why later!
 
 - `+=`, `-=`, `*=`, `/=`, `%=`, `|=`, `&=`, `^=`, `<<=`, `>>=`

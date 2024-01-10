@@ -11,9 +11,15 @@ int main(){
 
 ## Pseudo-Random
 
-The number is pseido-random
+The number is pseudo-random
 - mathematical function displaying "chaotic" behavior
 - close to ideal distribution
+- this is a useful feature. It allows us to have "random numbers"
+  - that appear random to the user
+  - but are predictable by the computer
+- use cases for that predictability:
+  - deterministic games, e.g. reproduce bugs that happen after certain "random" events
+  - network games, e.g. make sure that every player's client simulates the same "random" events
 
 ## Random 0..RAND_MAX
 
@@ -27,6 +33,10 @@ int random = rand();
 
 Random Number between `0` and `max` (exclusive)
 - Use the Modulo-Operator!
+
+```cpp
+int random = rand()%max;
+```
 
 ```
 rand() -> rand()%5:
@@ -44,20 +54,16 @@ rand() -> rand()%5:
   ...
 ```
 
-```cpp
-int random = rand()%max;
-```
-
 ## Random min..max
 
 Random Number between `min` (inclusive) and `max` (exclusive)
 
 ```cpp
-int random = rand()%(max-min+1) + min;
+int random = rand()%(max-min) + min;
 ```
 
 ```
-rand() -> rand()%3+2:
+rand() -> rand()%(5-2)+2:
  0 -> 0+2 -> 2
  1 -> 1+2 -> 3
  2 -> 2+2 -> 4
@@ -86,7 +92,7 @@ int main(){
 ```
 
 You always get the same numbers?
-- successivecalls of `rand()` return a deterministic sequence of numbers
+- successive calls of `rand()` return a deterministic sequence of numbers
 - you get the same "random" numbers every time!
 - very useful for debugging
 

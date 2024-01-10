@@ -1,10 +1,17 @@
 ## 6 Control Structures
 
-### Jumps
-- `goto`, `break`, `continue`
-
 ### Branches
 - `if`, `switch`
+
+Used to write code that behaves differently depending on some condition
+
+```cpp
+if(age < 20){
+	printf("not allowed into systembolaget.");
+} else {
+	printf("welcome in!");
+}
+```
 
 #### Switch
 
@@ -23,13 +30,34 @@ switch(number) {
 }
 ```
 
-Performance: Compiler can generate:
+Performance Benefit: Compiler can generate:
 - jump table: no comparison needed
 - binary decision tree: optimized if..else with binary search
 - worst case: same as if..else
 
 ### Loops
 `for`, `while`, `do..while`
+
+Used to write code that repeats as many times as a certain condition commands
+
+```cpp
+while(!gameOver){
+	// [...] continue game
+}
+```
+
+### Jumps
+- `goto`, `break`, `continue`
+
+Used to escape from loops or jump over lines of code otherwise:
+
+```cpp
+while(!gameOver){
+	// [...] check for errors
+	if(errorHappened) break;
+	// [...] continue game
+}
+```
 
 ## Expressions
 
