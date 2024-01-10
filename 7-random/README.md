@@ -1,6 +1,6 @@
 # 7 Random
 
-```cpp
+```c++
 #include <stdlib.h>
 
 int main(){
@@ -25,7 +25,7 @@ The number is pseudo-random
 
 Random Number between `0` and `RAND_MAX`
 
-```cpp
+```c++
 int random = rand();
 ```
 
@@ -34,7 +34,7 @@ int random = rand();
 Random Number between `0` and `max` (exclusive)
 - Use the Modulo-Operator!
 
-```cpp
+```c++
 int random = rand()%max;
 ```
 
@@ -58,7 +58,7 @@ rand() -> rand()%5:
 
 Random Number between `min` (inclusive) and `max` (exclusive)
 
-```cpp
+```c++
 int random = rand()%(max-min) + min;
 ```
 
@@ -80,7 +80,7 @@ rand() -> rand()%(5-2)+2:
 
 Run this program multiple times:
 
-```cpp
+```c++
 #include <stdlib.h>
 #include <iostream>
 
@@ -100,13 +100,13 @@ You always get the same numbers?
 
 Assign a different seed, if you want a different set of "random" numbers:
 
-```cpp
+```c++
 srand(50);
 ```
 
 After changing the seed, all consecutive calls to `rand()` will use that seed:
 
-```cpp
+```c++
     std::cout << "First two random numbers of seed 50:" << std::endl;
     srand(50);
     std::cout << rand() % 100 << std::endl;
@@ -123,9 +123,9 @@ After changing the seed, all consecutive calls to `rand()` will use that seed:
 
 ## Completely Random
 
-If you want your Seed to be "random" every time you start your program, just use the current time:
+If you want your Seed to be "random" every time you start your program, just use the current time as a seed:
 
-```cpp
+```c++
 #include <time.h>
 
 // ...

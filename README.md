@@ -3,7 +3,7 @@
 In this course, we'll learn all the basics to get us up and running far enough to be able to implement Nim / Tic-Tac-Toe!
 
 ## Passing Criteria
-Implement Nim
+Implement [Basic Nim](https://github.com/marczaku/102-csharp-basics/tree/main/G-game-on)
 
 ## Excellent Criteria
-Implement the Real Nim (with 3 Stacks of Matches)
+Implement [The Real Nim](https://github.com/marczaku/103-csharp-structured/tree/main/14-game-on)

@@ -5,9 +5,9 @@
 
 Used to write code that behaves differently depending on some condition
 
-```cpp
-if(age < 20){
-	printf("not allowed into systembolaget.");
+```c++
+if(age < 20) {
+	printf("not allowed to enter.");
 } else {
 	printf("welcome in!");
 }
@@ -15,7 +15,7 @@ if(age < 20){
 
 #### Switch
 
-```cpp
+```c++
 int number = 1;
 switch(number) {
 	case 0: {
@@ -40,8 +40,8 @@ Performance Benefit: Compiler can generate:
 
 Used to write code that repeats as many times as a certain condition commands
 
-```cpp
-while(!gameOver){
+```c++
+while(!gameOver) {
 	// [...] continue game
 }
 ```
@@ -51,8 +51,8 @@ while(!gameOver){
 
 Used to escape from loops or jump over lines of code otherwise:
 
-```cpp
-while(!gameOver){
+```c++
+while(!gameOver) {
 	// [...] check for errors
 	if(errorHappened) break;
 	// [...] continue game
@@ -63,7 +63,7 @@ while(!gameOver){
 
 Every expression is a valid C++ statement. Including:
 
-```cpp
+```c++
 a = b = 10 + 2;
 a = 10 + 2;
 10 + 2;
@@ -72,7 +72,7 @@ a = 10 + 2;
 
 ### Expression Short-Cutting
 
-```cpp
+```c++
 int a = 0, b = 0;
 if(++a || ++b){
 	printf("True!");

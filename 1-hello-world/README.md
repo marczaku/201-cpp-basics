@@ -2,7 +2,7 @@
 
 ## Source Files
 
-```cpp
+```c++
 #include <cstdio>
 
 int main(){
@@ -35,7 +35,7 @@ int main(){
 
 ### include
 
-```cpp
+```c++
 #include <cstdio>
 ```
 
@@ -60,7 +60,7 @@ g++ -E main.cpp -o main.i
 <details>
     <summary>View Output</summary>
 
-```cpp
+```c++
 # 1 "main.cpp"
 # 1 "<built-in>" 1
 # 1 "<built-in>" 3
@@ -841,7 +841,7 @@ Useful: Can be updated without changing the Executables that use them
 
 ### All in One
 
-```cpp
+```c++
 gcc main.cpp -o main -std=c++14
 ```
 
@@ -882,7 +882,7 @@ Debugging Code is as important as always.
 
 Try it with the following code:
 
-```cpp
+```c++
 int main() {
 	int num1 = 12;
 	int num2 = 0;

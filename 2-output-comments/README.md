@@ -4,14 +4,14 @@
 
 ### C-Style Comments
 
-```cpp
+```c++
 /*
  * multi-line comment
  */
 ```
 
 Careful: Nesting Comments does not work!
-```cpp
+```c++
 /*
 void foo() {
 	int a = 3;
@@ -23,7 +23,7 @@ void foo() {
 ```
 
 ### Cpp-Style Comments
-```cpp
+```c++
 // single-line comment
 int number = 12; // span the rest of the line
 ```
@@ -32,7 +32,7 @@ int number = 12; // span the rest of the line
 
 ### Old, C Style
 
-```cpp
+```c++
 #include <cstdio>
 ```
 
@@ -40,29 +40,30 @@ int number = 12; // span the rest of the line
 
 Prints the given string and a newline to the console.
 
-```cpp
+```c++
 puts("Hello, World.");
 ```
 
 #### Write: Printf
 
-```cpp
+```c++
 printf("Hello, World.");
 ```
 
 #### Write Format: Printf
 
-```cpp
+```c++
 printf("Ten %d, Twenty %d, Thirty %d", 10, 20, 30);
 ```
 
 ### New, C++ Style
 
-```cpp
+```c++
 #include <iostream>
+using namespace std;
 ```
 
-```cpp
+```c++
 cout << "Hello, World." << endl;
 cout << "Ten " << 10 << " Twenty << 20 << " Thirty " << 30 << endl;
 ```

@@ -14,7 +14,7 @@
 
 Used to express mathematical operations:
 
-```cpp
+```c++
 float damage = (strength + itemPower) * bonusDamage;
 ```
 
@@ -35,7 +35,7 @@ The Player has full health if
 - the player's health is EQUAL TO
 - the player's max health
 
-```cpp
+```c++
 bool playerHasFullHealth = health == maxHealth;
 ```
 
@@ -50,7 +50,7 @@ The Game is over if
   - the game is NOT endless
   - AND the time is over
 
-```cpp
+```c++
 bool gameOver = playerIsDead || (!gameIsEndless && timeIsOver);
 ```
 
@@ -63,7 +63,7 @@ Used to do logical operations on bit-level
 - can be used for very simple encryption
 - most common use case: Enum Flags:
 
-```cpp
+```c++
 #include <cstdio>
 #include <array>
 #include <stdexcept>
@@ -105,13 +105,13 @@ int main()
 ### Compound Assignment Operators
 
 Exist to reduce our code from:
-```cpp
+```c++
 health = health + 5;
 ```
 
 to:
 
-```cpp
+```c++
 health += 5;
 ```
 

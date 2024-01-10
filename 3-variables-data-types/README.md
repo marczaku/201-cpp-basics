@@ -5,14 +5,14 @@
 
 ### Declaration
 
-```cpp
+```c++
 int health;
 int x, y, z;
 ```
 
 #### Global
 
-```cpp
+```c++
 int health;
 int main() {
 
@@ -21,7 +21,7 @@ int main() {
 
 #### Local
 
-```cpp
+```c++
 int main() {
 	int health;
 }
@@ -35,14 +35,14 @@ int main() {
 - cannot use keywords as identifiers
 
 ### Assignment Operator
-```cpp
+```c++
 int a;
 a = 5;
 ```
 - right-associative (executes right to left)
 
 Can be sequenced:
-```cpp
+```c++
 int a, b, c;
 c = b = a = 30;
 ```
@@ -52,7 +52,7 @@ c = b = a = 30;
 
 Assigning a value to a variable for the first time.
 
-```cpp
+```c++
 int health = 100;
 int minHealth = 0, maxHealth = 100;
 ```
@@ -61,12 +61,12 @@ int minHealth = 0, maxHealth = 100;
 
 Within File
 
-```cpp
+```c++
 // A.cpp
 int a;
 ```
 
-```cpp
+```c++
 // main.cpp
 int main() {
   // a = 5; NOT VALID
@@ -74,7 +74,7 @@ int main() {
 ```
 Below the line where it was declared
 
-```cpp
+```c++
 // a = 5; NOT VALID
 int a;
 a = 5; // OK
@@ -82,7 +82,7 @@ a = 5; // OK
 
 Within enclosing Curly Braces
 
-```cpp
+```c++
 {
   int a;
   a = 5; // OK
@@ -92,7 +92,7 @@ Within enclosing Curly Braces
 
 Must be unique within Scope
 
-```cpp
+```c++
 int a; // OK
 {
   int a; // OK
@@ -103,7 +103,7 @@ int a; // OK
 
 ### Constants
 
-```cpp
+```c++
 const int the_answer = 42;
 ```
 
@@ -139,7 +139,7 @@ Data types that are defined by the user are known as user-defined data types. Th
 
 ### Integers
 
-```cpp
+```c++
 // integers can store positive numbers:
 int number = 50;
 printf("%d", number); // 50
@@ -182,7 +182,7 @@ The more bytes, the larger the numbers that can be stored:
 By using the unsigned keyword, you define that your integer can only store positive numbers.
 - This allows for twice as large positive numbers using the same amount of bytes
 
-```cpp
+```c++
 char max_char = 127;
 char min_char = -128;
 unsigned char max_unsigned_char = 255;
@@ -190,7 +190,7 @@ unsigned char min_unsigned_char = 0;
 ```
 
 But if you assign negative numbers, you will end up with really large positive numbers instead:
-```cpp
+```c++
 unsigned char max_unsigned_char = -1; // 255
 ```
 
@@ -204,7 +204,7 @@ unsigned char max_unsigned_char = -1; // 255
 
 #### Guaranteed sizes
 
-```cpp
+```c++
 #include <cstdint>
 int8_t a; // 8 bit - 1 byte
 int16_t b; // 16 bit - 2 bytes
@@ -217,7 +217,7 @@ uint8_t e; // 8 bit - 1 byte - unsigned
 
 #### Literals
 
-```cpp
+```c++
 int a = 0b11; // binary
 int b = 011; // octal
 int c = 11; // decimal
@@ -226,7 +226,7 @@ int e = 1'000'000; // improve readability
 ```
 
 What's the output?
-```cpp
+```c++
 printf("%d", 011);
 ```
 
@@ -235,7 +235,7 @@ Numeric literals per default have the smallest fitting type
 
 Unless you specify the type explicitly:
 
-```cpp
+```c++
 int a = 1234;
 unsigned int a = 1234u;
 long a = 1234l;
@@ -251,14 +251,14 @@ You can print your integers as:
 - he`x`adecimal
 - `d`ecimal
 
-```cpp
+```c++
 	unsigned int a = 65;
 	printf("%c, %o, %d, %x", a, a, a, a);
 ```
 
 ### Floating-Point Types
 
-```cpp
+```c++
 float f = .3f;
 double d = .3;
 long double ld = .3l;
@@ -270,7 +270,7 @@ long double ld = .3l;
 
 #### Literals
 
-```cpp
+```c++
 float d = 10.3f;
 float e = .3f;
 float f = 6.3e+12;
@@ -279,7 +279,7 @@ float g = 6.3e-12;
 
 #### Printf
 
-```cpp
+```c++
 float f = .0003f;
 printf("%f, %e, %g", f, f, f);
 ```
@@ -288,7 +288,7 @@ printf("%f, %e, %g", f, f, f);
 - `%e`: scientific notation
 - `%g`: shorter of either above
 
-```cpp
+```c++
 double d = 0.003d;
 long double ld = 0.0003l;
 printf("%lf, %Lf", d, ld);
@@ -296,7 +296,7 @@ printf("%lf, %Lf", d, ld);
 
 ### Characters
 
-```cpp
+```c++
 char ascii = 'a';
 char16_t utf16 = u'a';
 char32_t utf32 = U'a';
@@ -318,7 +318,7 @@ wchar_t unicode = L'a';
 
 #### Unicode
 
-```cpp
+```c++
 wchar_t a = '\u0041'; // 4-digit unicode
 wchar_t beer = U'\U0001F37A'; // 8-digit unicode
 ```
@@ -329,7 +329,7 @@ But beware! Your Console might not be capable of displaying Unicode Characters w
 
 #### Printf
 
-```cpp
+```c++
 #include <cstdio>
 
 int main() {
@@ -344,14 +344,14 @@ Booleans are just integers with two possible values!
 - `1` (`true`)
 - `0` (`false`)
 
-```cpp
+```c++
 bool b = false; // 0
 bool c = true; // 1
 ```
 
 #### Printf
 
-```cpp
+```c++
 #include <cstdio>
 
 int main() {
@@ -367,7 +367,7 @@ Later
 
 ### size_t
 
-```cpp
+```c++
 size_t floatSize = sizeof(float);
 ```
 
@@ -377,13 +377,13 @@ size_t floatSize = sizeof(float);
 
 #### Printf
 
-```cpp
+```c++
 printf("float: %zu", sizeof(float));
 ```
 
 ### void
 
-```cpp
+```c++
 void sayHello() {
 	printf("Hello!");
 }
@@ -395,7 +395,7 @@ void sayHello() {
 
 #### Scoped Enum (Modern, C++ Style)
 
-```cpp
+```c++
 enum class ChessPiece {
 	Rook,
 	Pawn,
@@ -404,13 +404,13 @@ enum class ChessPiece {
 };
 ```
 
-```cpp
+```c++
 ChessPiece rook = ChessPiece::Rook
 ```
 
 #### Unscoped Enum (Old, C-Style)
 
-```cpp
+```c++
 enum ChessPiece {
 	Rook,
 	Pawn,
@@ -419,7 +419,7 @@ enum ChessPiece {
 };
 ```
 
-```cpp
+```c++
 ChessPiece rook = Rook;
 ```
 
@@ -433,7 +433,7 @@ All members of a union share the same address in memory.
 - sometimes used for some low-level optimizations
 - generally considered "evil"
 
-```cpp
+```c++
 union {
   bool b;
   char c;
