@@ -65,10 +65,9 @@ Used to do logical operations on bit-level
 
 ```c++
 #include <cstdio>
-#include <array>
-#include <stdexcept>
+#include <Windows.h>
 
-enum class AttackFlags : uint8_t
+enum AttackFlags : uint8_t
 {
     None = 0,
     Stun = 1 << 0,     //  1 0b00000001
@@ -79,23 +78,24 @@ enum class AttackFlags : uint8_t
     Despell = 1 << 5,  // 32 0b00100000
 };
 
+DEFINE_ENUM_FLAG_OPERATORS(AttackFlags)
+
 int main()
 {
     AttackFlags flags{ AttackFlags::None };
 
     // setting bits:
-    flags = static_cast<AttackFlags>(static_cast<uint8_t>(flags) | static_cast<uint8_t>(AttackFlags::Stun));
-    flags = static_cast<AttackFlags>(static_cast<uint8_t>(flags) | static_cast<uint8_t>(AttackFlags::Poison));
+    flags |= AttackFlags::Stun | AttackFlags::Poison;
 
     // unsetting bits:
-    flags = static_cast<AttackFlags>(static_cast<uint8_t>(flags) & ~static_cast<uint8_t>(AttackFlags::Stun));
+    flags &= ~AttackFlags::Stun;
 
     // testing for bits:
-    if (static_cast<uint8_t>(flags) & static_cast<uint8_t>(AttackFlags::Poison)) {
+    if (flags & AttackFlags::Poison) {
         // true
         printf("You will see this, since the Poison-Bit is set.");
     }
-    if (static_cast<uint8_t>(flags) & static_cast<uint8_t>(AttackFlags::Stun)) {
+    if (flags & AttackFlags::Stun) {
         // false
         printf("You will not see this, since the Stun-Bit is not set.");
     }

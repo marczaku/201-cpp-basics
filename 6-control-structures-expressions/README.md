@@ -65,6 +65,7 @@ Every expression is a valid C++ statement. Including:
 
 ```c++
 a = b = 10 + 2;
+a = (b = 10) + 2;
 a = 10 + 2;
 10 + 2;
 2;
@@ -80,9 +81,9 @@ if(++a || ++b){
 printf("a: %d, b: %d", a, b);
 ```
 
-- first sub-expression is already true
+- first sub-expression is already `true`
 - so second sub-expression of `||` doesn't have to be executed
-- can be very useful e.g. `if(player && player.canAttack)`
+- can be very useful e.g. `if(player && player.canAttack())`
 - can also be unintended
 
 ## EXERCISE: Triangle

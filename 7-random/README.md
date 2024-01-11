@@ -26,6 +26,7 @@ The number is pseudo-random
 Random Number between `0` and `RAND_MAX`
 
 ```c++
+printf("This gives you a number between 0 and %d.\n", RAND_MAX);
 int random = rand();
 ```
 
@@ -33,9 +34,10 @@ int random = rand();
 
 Random Number between `0` and `max` (exclusive)
 - Use the Modulo-Operator!
+- This evenly distributes all your numbers into `max` buckets
 
 ```c++
-int random = rand()%max;
+int random = rand() % max;
 ```
 
 ```
@@ -123,7 +125,7 @@ After changing the seed, all consecutive calls to `rand()` will use that seed:
 
 ## Completely Random
 
-If you want your Seed to be "random" every time you start your program, just use the current time as a seed:
+If you want your Seed to be "really random" every time you start your program, just use the current time as a seed:
 
 ```c++
 #include <time.h>
