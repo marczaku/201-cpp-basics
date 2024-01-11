@@ -23,7 +23,23 @@ switch(c){
 
 ### Read String: fgets
 
-Later (Requires Pointer Knowledge)
+```c++
+char buffer[100];
+
+// Read a string from the console
+if (fgets(buffer, sizeof(buffer), stdin) != nullptr) {
+    // Remove the newline character at the end, if present
+    size_t length = strlen(buffer);
+    if (length > 0 && buffer[length - 1] == '\n') {
+        buffer[length - 1] = '\0';
+    }
+
+    printf("You entered: %s\n", buffer);
+} else {
+    // Error handling if fgets fails
+    printf("Error reading input.\n");
+}
+```
 
 ### Read Format: scanf_s
 
@@ -102,26 +118,28 @@ switch(c){
 ### With Error-Handling
 
 ```c++
-#include <iostream>
-
-using namespace std;
-
 int main() {
-    for (int i = 0; i < 5; i++)
-    {
-        cout << "Give me a number." << endl;
-        // declare variable to store the information in
-        int num1;
-        while (!(cin >> num1))
-        {
-            cin.clear();
-            cin.ignore(1000000, '\n');
-            cout << "That's not a valid input, try again." << endl;
-        }
+    int firstNumber, secondNumber;
 
-        // else, we can print the average of both provided numbers:
-        printf("Half of that is %d.\n", (num1 ) / 2);
+    while (true) {
+        std::cout << "Enter two numbers separated by a comma: ";
+
+        // Try to read two integers separated by a comma
+        if (std::cin >> firstNumber >> std::ws && std::cin.peek() == ',' && std::cin.ignore() >> secondNumber && std::cin.eof()) {
+            // Input is valid, break out of the loop
+            break;
+        } else {
+            // Input is invalid, clear the input buffer and ask the user again
+            std::cin.clear();
+            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+            std::cout << "Invalid input. Please enter two numbers separated by a comma.\n";
+        }
     }
+
+    // Use firstNumber and secondNumber as needed
+    std::cout << "You entered: " << firstNumber << " and " << secondNumber << std::endl;
+
+    return 0;
 }
 ```
 
