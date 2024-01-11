@@ -174,3 +174,11 @@ Output: How many Seconds have passed?
 Input:4567
 Output: 01:16:07
 ```
+
+## EXERCISE
+Ask the user for their name. Greet the user.
+```
+Output: Hi, what's your name?
+Input:Marc
+Output: Hello, Marc!
+```
