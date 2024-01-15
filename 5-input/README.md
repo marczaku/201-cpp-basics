@@ -121,27 +121,22 @@ switch(c){
 
 ```c++
 int main() {
-    int firstNumber, secondNumber;
+tryagain:
+    cout << "\nGive me two numbers Separated by Comma. Like -2,5\n";
+    int firstNumber;
+    int secondNumber;
 
-    while (true) {
-        std::cout << "Enter two numbers separated by a comma: ";
 
-        // Try to read two integers separated by a comma
-        if (std::cin >> firstNumber >> std::ws && std::cin.peek() == ',' && std::cin.ignore() >> secondNumber && std::cin.eof()) {
-            // Input is valid, break out of the loop
-            break;
-        } else {
-            // Input is invalid, clear the input buffer and ask the user again
-            std::cin.clear();
-            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-            std::cout << "Invalid input. Please enter two numbers separated by a comma.\n";
-        }
+    if (cin >> firstNumber >> ws && cin.peek() == ',' && cin.ignore() >> secondNumber) {
+        cout << "success!";
     }
-
-    // Use firstNumber and secondNumber as needed
-    std::cout << "You entered: " << firstNumber << " and " << secondNumber << std::endl;
-
-    return 0;
+    else {
+        cout << "nope!";
+        cin.clear();
+        cin.ignore(numeric_limits<streamsize>::max(), '\n');
+        goto tryagain;
+    }
+    cout << "Higher Number is : " << (firstNumber > secondNumber ? firstNumber : secondNumber) << "\n";
 }
 ```
 
