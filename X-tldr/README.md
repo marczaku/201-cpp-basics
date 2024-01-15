@@ -32,9 +32,22 @@ void Main() {
   - the "classic", low-level C way
 
 ## Output
-- C# way: `Console.WriteLine($"{3}, {3.2f}, {true}, {'a'}");`
-- C way: `printf("%d, %f, %d, %c", 3, 3.2f, true, 'a');`
-- C++ way: `std::cout << 3 << ", " << 3.2f << ", " << true << ", " << a;`
+
+### C#
+```csharp
+Console.WriteLine($"{3}, {3.2f}, {true}, {'a'}");
+```
+
+### C
+
+```c++
+printf("%d, %f, %d, %c", 3, 3.2f, true, 'a');
+```
+
+### C++
+```c++
+cout << 3 << ", " << 3.2f << ", " << true << ", " << a;
+```
 
 ## Variables & Data Types
 - `bool` is basically just an `int`
@@ -46,9 +59,21 @@ void Main() {
 - same as in C#
 
 ## Input
-- C# way: `int number = int.Parse(Console.ReadLine());`
-- C way: `scanf_s("%d", &number);`
-- C++ way: `cin >> number;`
+
+### C#
+```csharp
+int number = int.Parse(Console.ReadLine());
+```
+
+### C
+```c++
+scanf_s("%d", &number);
+```
+
+### C++
+```c++
+cin >> number;
+```
 
 ## Control Structures
 - Same as in C#
