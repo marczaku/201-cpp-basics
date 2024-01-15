@@ -4,6 +4,27 @@
 - C++ is very similar to C#
 - in fact, C# was derived from C++
 
+## C# Hello World
+
+```csharp
+using System;
+class Program {
+    static void Main() {
+        Console.WriteLine("Hello, World!");
+    }
+}
+```
+
+## C++ Hello World
+
+```csharp
+#include <iostream>
+using namespace std;
+void Main() {
+    cout << "Hello, World!";
+}
+```
+
 ## C++ and C
 - C++ was derived from C and is fully backward-compatible
 - For many problems there's two ways of solving it:
